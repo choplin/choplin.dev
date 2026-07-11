@@ -1,0 +1,6 @@
+# pnpm settings (https://pnpm.io/settings)
+# Allow these dependencies to run their build/postinstall scripts.
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true

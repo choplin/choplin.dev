@@ -1,0 +1,22 @@
+[devshell]
+name = "blog"
+
+packages = [
+  "nodejs_22",
+  "pnpm",
+]
+
+[[commands]]
+name = "dev"
+command = "pnpm dev"
+help = "Start the Astro dev server"
+
+[[commands]]
+name = "build"
+command = "pnpm build"
+help = "Build the site for production"
+
+[[commands]]
+name = "deploy"
+command = "pnpm run deploy"
+help = "Build and deploy to Cloudflare Workers"

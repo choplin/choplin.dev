@@ -1,0 +1,40 @@
+---
+import { GISCUS } from '../consts';
+---
+
+{
+	GISCUS.enabled && (
+		<section class="comments">
+			<h2>Comments</h2>
+			<script
+				is:inline
+				src="https://giscus.app/client.js"
+				data-repo={GISCUS.repo}
+				data-repo-id={GISCUS.repoId}
+				data-category={GISCUS.category}
+				data-category-id={GISCUS.categoryId}
+				data-mapping={GISCUS.mapping}
+				data-strict="0"
+				data-reactions-enabled={GISCUS.reactionsEnabled}
+				data-emit-metadata={GISCUS.emitMetadata}
+				data-input-position={GISCUS.inputPosition}
+				data-theme="preferred_color_scheme"
+				data-lang={GISCUS.lang}
+				crossorigin="anonymous"
+				async
+			/>
+		</section>
+	)
+}
+
+<style>
+	.comments {
+		width: 720px;
+		max-width: calc(100% - 2em);
+		margin: 2em auto 0;
+		padding: 1em;
+	}
+	.comments h2 {
+		margin-bottom: 0.5em;
+	}
+</style>

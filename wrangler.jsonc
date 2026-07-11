@@ -1,0 +1,15 @@
+{
+  // https://developers.cloudflare.com/workers/wrangler/configuration/
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "blog",
+  "compatibility_date": "2026-07-11",
+  // Static Astro build output served as Workers Static Assets.
+  // No `main` worker script is needed for a purely static site;
+  // add one (plus the @astrojs/cloudflare adapter) later if SSR is required.
+  "assets": {
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
