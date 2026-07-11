@@ -30,7 +30,7 @@ type Strings = {
 	nav: { home: string; blog: string; about: string };
 	lastUpdated: string;
 	site: { description: string };
-	home: { heading: string; intro: string; readBlog: string };
+	home: { role: string; intro: string; allPosts: string };
 	blog: { title: string; description: string };
 	about: { title: string; description: string };
 };
@@ -42,9 +42,9 @@ export const UI: Record<Locale, Strings> = {
 		lastUpdated: 'Last updated on',
 		site: { description: 'Personal site and blog of choplin (Akihiro Okuno).' },
 		home: {
-			heading: 'Hi, I’m choplin 👋',
-			intro: 'Software engineer. I write about what I build and learn here.',
-			readBlog: 'Read the blog →',
+			role: 'Software engineer specializing in databases.',
+			intro: 'Notes on building software, and thoughts.',
+			allPosts: 'All posts →',
 		},
 		blog: { title: 'Blog', description: 'Posts by choplin.' },
 		about: { title: 'About', description: 'About choplin.' },
@@ -55,9 +55,9 @@ export const UI: Record<Locale, Strings> = {
 		lastUpdated: '最終更新',
 		site: { description: 'choplin（奥野晃裕）の個人サイト・ブログ。' },
 		home: {
-			heading: 'こんにちは、choplin です 👋',
-			intro: 'ソフトウェアエンジニア。作ったものや学んだことを書いています。',
-			readBlog: 'ブログを読む →',
+			role: 'データベースを専門とするソフトウェアエンジニア。',
+			intro: 'ソフトウェアづくりのノートと、考えていること。',
+			allPosts: '記事一覧 →',
 		},
 		blog: { title: 'ブログ', description: 'choplin の記事一覧。' },
 		about: { title: '自己紹介', description: 'choplin について。' },

@@ -4,6 +4,7 @@ import { type Locale, UI, localePath, otherLocale } from '../i18n';
 import BaseHead from './BaseHead.astro';
 import Footer from './Footer.astro';
 import Header from './Header.astro';
+import PostList from './PostList.astro';
 
 interface Props {
 	locale: Locale;
@@ -18,13 +19,35 @@ const switchHref = localePath(otherLocale(locale), '/');
 <html lang={locale}>
 	<head>
 		<BaseHead title={SITE_TITLE} description={t.site.description} />
+		<style>
+			.intro {
+				margin-bottom: 2.5rem;
+			}
+			.intro h1 {
+				margin: 0 0 0.2em;
+			}
+			.intro p {
+				margin: 0.2em 0;
+				color: rgb(var(--gray));
+			}
+			.all-posts {
+				margin-top: 2rem;
+				text-align: right;
+			}
+		</style>
 	</head>
 	<body>
 		<Header locale={locale} switchHref={switchHref} />
 		<main>
-			<h1>{t.home.heading}</h1>
-			<p>{t.home.intro}</p>
-			<p><a href={localePath(locale, '/blog')}>{t.home.readBlog}</a></p>
+			<section class="intro">
+				<h1>{SITE_TITLE}</h1>
+				<p>{t.home.role}</p>
+				<p>{t.home.intro}</p>
+			</section>
+			<PostList locale={locale} limit={5} />
+			<p class="all-posts">
+				<a href={localePath(locale, '/blog')}>{t.home.allPosts}</a>
+			</p>
 		</main>
 		<Footer />
 	</body>

@@ -6,10 +6,13 @@ import FormattedDate from './FormattedDate.astro';
 
 interface Props {
 	locale: Locale;
+	/** Show only the N most recent posts (omit for all). */
+	limit?: number;
 }
 
-const { locale } = Astro.props;
-const posts = await localePosts(locale);
+const { locale, limit } = Astro.props;
+const all = await localePosts(locale);
+const posts = limit ? all.slice(0, limit) : all;
 ---
 
 <section>
