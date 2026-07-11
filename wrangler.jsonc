@@ -1,7 +1,7 @@
 {
   // https://developers.cloudflare.com/workers/wrangler/configuration/
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "blog",
+  "name": "choplin-dev",
   "compatibility_date": "2026-07-11",
   // Static Astro build output served as Workers Static Assets.
   // No `main` worker script is needed for a purely static site;
@@ -9,6 +9,9 @@
   "assets": {
     "directory": "./dist"
   },
+  // Serve the site on the custom domain (zone is on this Cloudflare account).
+  // Wrangler provisions the proxied DNS record + TLS cert automatically.
+  "routes": [{ "pattern": "choplin.dev", "custom_domain": true }],
   "observability": {
     "enabled": true
   }
