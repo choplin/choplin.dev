@@ -42,8 +42,8 @@ export const UI: Record<Locale, Strings> = {
 		lastUpdated: 'Last updated on',
 		site: { description: 'Personal site and blog of choplin (Akihiro Okuno).' },
 		home: {
-			role: 'Software engineer specializing in databases.',
-			intro: 'Notes on building software, and thoughts.',
+			role: 'Software engineer — databases, developer tools, and AI-assisted development.',
+			intro: 'Notes on building software, and thoughts on how we build it.',
 			allPosts: 'All posts →',
 		},
 		blog: { title: 'Blog', description: 'Posts by choplin.' },
@@ -55,8 +55,8 @@ export const UI: Record<Locale, Strings> = {
 		lastUpdated: '最終更新',
 		site: { description: 'choplin（奥野晃裕）の個人サイト・ブログ。' },
 		home: {
-			role: 'データベースを専門とするソフトウェアエンジニア。',
-			intro: 'ソフトウェアづくりのノートと、考えていること。',
+			role: 'ソフトウェアエンジニア。データベース、開発ツール、そして AI とともにつくる開発。',
+			intro: 'ソフトウェアづくりのメモと、その「つくり方」についての考え。',
 			allPosts: '記事一覧 →',
 		},
 		blog: { title: 'ブログ', description: 'choplin の記事一覧。' },
