@@ -9,14 +9,14 @@ export const SITE_DESCRIPTION = 'Welcome to my website!';
 // and installing the giscus app on the target repository.
 // Set `enabled` to true once the values below are populated.
 export const GISCUS = {
-	enabled: false,
-	repo: 'your-name/your-repo', // e.g. 'aki/blog'
-	repoId: '', // data-repo-id from giscus.app
+	enabled: true,
+	repo: 'choplin/choplin.dev',
+	repoId: 'R_kgDOTVT3wA', // data-repo-id from giscus.app
 	category: 'Announcements', // Discussions category name
-	categoryId: '', // data-category-id from giscus.app
+	categoryId: 'DIC_kwDOTVT3wM4DA-AR', // data-category-id from giscus.app
 	mapping: 'pathname', // how posts map to discussions
 	reactionsEnabled: '1',
 	emitMetadata: '0',
-	inputPosition: 'bottom', // 'top' | 'bottom'
+	inputPosition: 'top', // 'top' | 'bottom'
 	lang: 'ja',
 } as const;

@@ -27,6 +27,8 @@ worker-configuration.d.ts
 
 # claude code local settings
 .claude/settings.local.json
+# symlink to AGENTS.md (which is globally ignored)
+CLAUDE.md
 
 # macOS-specific files
 .DS_Store
