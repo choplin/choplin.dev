@@ -1,16 +1,16 @@
 ---
 import { render } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
-import { localePosts, otherLocaleHref } from '../../lib/posts';
+import BlogPost from '../../../layouts/BlogPost.astro';
+import { localePosts, otherLocaleHref } from '../../../lib/posts';
 
 export async function getStaticPaths() {
-	const posts = await localePosts('en');
+	const posts = await localePosts('ja');
 	return Promise.all(
 		posts.map(async (post) => ({
 			params: { slug: post.slug },
 			props: {
 				entry: post.entry,
-				switchHref: await otherLocaleHref('en', post.data.translationKey),
+				switchHref: await otherLocaleHref('ja', post.data.translationKey),
 			},
 		})),
 	);
@@ -20,6 +20,6 @@ const { entry, switchHref } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<BlogPost {...entry.data} locale="en" switchHref={switchHref}>
+<BlogPost {...entry.data} locale="ja" switchHref={switchHref}>
 	<Content />
 </BlogPost>

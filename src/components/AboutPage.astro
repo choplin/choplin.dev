@@ -1,0 +1,36 @@
+---
+import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import { type Locale, UI, localePath, otherLocale } from '../i18n';
+import Layout from '../layouts/BlogPost.astro';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = UI[locale];
+const switchHref = localePath(otherLocale(locale), '/about');
+
+// Placeholder about copy — edit freely.
+const body: Record<Locale, string[]> = {
+	en: [
+		'I’m choplin (Akihiro Okuno), a software engineer based in Japan.',
+		'This is my personal site. I write about what I build and learn — expect notes on software, tools, and the occasional experiment.',
+	],
+	ja: [
+		'choplin（奥野晃裕）です。日本を拠点とするソフトウェアエンジニアです。',
+		'ここは個人サイトです。作ったものや学んだこと——ソフトウェア、ツール、ときどきの実験——について書いています。',
+	],
+};
+---
+
+<Layout
+	title={t.about.title}
+	description={t.about.description}
+	pubDate={new Date('2026-07-11')}
+	heroImage={AboutHeroImage}
+	locale={locale}
+	switchHref={switchHref}
+>
+	{body[locale].map((p) => <p>{p}</p>)}
+</Layout>

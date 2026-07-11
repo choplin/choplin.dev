@@ -7,7 +7,20 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://choplin.dev',
-	integrations: [mdx(), sitemap()],
+	i18n: {
+		defaultLocale: 'en',
+		locales: ['en', 'ja'],
+		routing: { prefixDefaultLocale: false },
+	},
+	integrations: [
+		mdx(),
+		sitemap({
+			i18n: {
+				defaultLocale: 'en',
+				locales: { en: 'en', ja: 'ja' },
+			},
+		}),
+	],
 	fonts: [
 		{
 			provider: fontProviders.local(),

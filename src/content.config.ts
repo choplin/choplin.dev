@@ -14,6 +14,9 @@ const blog = defineCollection({
 			// (data-term with mapping="specific"). Keeps comments attached
 			// even if the post's URL/slug changes. NEVER change it once published.
 			commentId: z.string(),
+			// Optional: shared key linking the same post across locales
+			// (en/ja) for cross-language switch links + hreflang.
+			translationKey: z.string().optional(),
 			// Transform string to Date object
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),

@@ -4,9 +4,13 @@ import type { HTMLAttributes } from 'astro/types';
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+// Strip a leading non-default locale segment (e.g. /ja) so active-state
+// matching works the same on English and Japanese routes.
+const stripLocale = (p: string) => p.replace(/^\/ja(?=\/|$)/, '') || '/';
+const pathname = stripLocale(Astro.url.pathname.replace(import.meta.env.BASE_URL, ''));
+const target = stripLocale(String(href));
 const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const isActive = target === pathname || target === '/' + (subpath?.[0] || '');
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>

@@ -4,9 +4,11 @@ import { GISCUS } from '../consts';
 interface Props {
 	/** Immutable per-post key (frontmatter `commentId`) — the giscus discussion term. */
 	term: string;
+	/** giscus UI language; defaults to the configured one. Pass the post locale. */
+	lang?: string;
 }
 
-const { term } = Astro.props;
+const { term, lang = GISCUS.lang } = Astro.props;
 const enabled = GISCUS.enabled && !!term;
 ---
 
@@ -24,7 +26,7 @@ const enabled = GISCUS.enabled && !!term;
 				emitMetadata: GISCUS.emitMetadata,
 				inputPosition: GISCUS.inputPosition,
 				theme: GISCUS.theme,
-				lang: GISCUS.lang,
+				lang,
 				term,
 			}}
 		>

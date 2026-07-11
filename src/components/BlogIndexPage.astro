@@ -1,0 +1,35 @@
+---
+import { SITE_TITLE } from '../consts';
+import { type Locale, UI, localePath, otherLocale } from '../i18n';
+import BaseHead from './BaseHead.astro';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import PostList from './PostList.astro';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = UI[locale];
+const switchHref = localePath(otherLocale(locale), '/blog');
+---
+
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<BaseHead title={`${t.blog.title} | ${SITE_TITLE}`} description={t.blog.description} />
+		<style>
+			main {
+				width: 960px;
+			}
+		</style>
+	</head>
+	<body>
+		<Header locale={locale} switchHref={switchHref} />
+		<main>
+			<PostList locale={locale} />
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,31 @@
+---
+import { SITE_TITLE } from '../consts';
+import { type Locale, UI, localePath, otherLocale } from '../i18n';
+import BaseHead from './BaseHead.astro';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = UI[locale];
+const switchHref = localePath(otherLocale(locale), '/');
+---
+
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<BaseHead title={SITE_TITLE} description={t.site.description} />
+	</head>
+	<body>
+		<Header locale={locale} switchHref={switchHref} />
+		<main>
+			<h1>{t.home.heading}</h1>
+			<p>{t.home.intro}</p>
+			<p><a href={localePath(locale, '/blog')}>{t.home.readBlog}</a></p>
+		</main>
+		<Footer />
+	</body>
+</html>
