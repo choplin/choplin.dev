@@ -10,6 +10,10 @@ const blog = defineCollection({
 		z.object({
 			title: z.string(),
 			description: z.string(),
+			// Immutable, unique-per-post key for giscus comments
+			// (data-term with mapping="specific"). Keeps comments attached
+			// even if the post's URL/slug changes. NEVER change it once published.
+			commentId: z.string(),
 			// Transform string to Date object
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),

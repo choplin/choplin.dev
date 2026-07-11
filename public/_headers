@@ -1,0 +1,5 @@
+# Cloudflare Workers/Pages static-asset headers.
+# Allow the giscus iframe (giscus.app) to fetch the custom theme CSS.
+/giscus-theme.css
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600

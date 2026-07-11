@@ -9,7 +9,7 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, commentId } = Astro.props;
 ---
 
 <html lang="en">
@@ -80,7 +80,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					</div>
 					<slot />
 				</div>
-				<Comments />
+				<Comments term={commentId} />
 			</article>
 		</main>
 		<Footer />

@@ -1,29 +1,78 @@
 ---
 import { GISCUS } from '../consts';
+
+interface Props {
+	/** Immutable per-post key (frontmatter `commentId`) — the giscus discussion term. */
+	term: string;
+}
+
+const { term } = Astro.props;
+const enabled = GISCUS.enabled && !!term;
 ---
 
 {
-	GISCUS.enabled && (
-		<section class="comments">
-			<h2>Comments</h2>
-			<script
-				is:inline
-				src="https://giscus.app/client.js"
-				data-repo={GISCUS.repo}
-				data-repo-id={GISCUS.repoId}
-				data-category={GISCUS.category}
-				data-category-id={GISCUS.categoryId}
-				data-mapping={GISCUS.mapping}
-				data-strict="0"
-				data-reactions-enabled={GISCUS.reactionsEnabled}
-				data-emit-metadata={GISCUS.emitMetadata}
-				data-input-position={GISCUS.inputPosition}
-				data-theme="preferred_color_scheme"
-				data-lang={GISCUS.lang}
-				crossorigin="anonymous"
-				async
-			/>
-		</section>
+	enabled && (
+		<details class="comments" id="comments">
+			<summary>コメントを表示 / Comments</summary>
+			<div id="giscus-container" />
+		</details>
+	)
+}
+
+{
+	enabled && (
+		<script
+			define:vars={{
+				repo: GISCUS.repo,
+				repoId: GISCUS.repoId,
+				category: GISCUS.category,
+				categoryId: GISCUS.categoryId,
+				reactionsEnabled: GISCUS.reactionsEnabled,
+				emitMetadata: GISCUS.emitMetadata,
+				inputPosition: GISCUS.inputPosition,
+				theme: GISCUS.theme,
+				lang: GISCUS.lang,
+				term,
+			}}
+		>
+			// Load giscus only when the reader opens the details — a closed
+			// comment section then costs zero iframe / network.
+			(function () {
+				const details = document.getElementById('comments');
+				const container = document.getElementById('giscus-container');
+				if (!details || !container) return;
+				let loaded = false;
+				details.addEventListener('toggle', function () {
+					if (!details.open || loaded) return;
+					loaded = true;
+					// Custom CSS themes must be an absolute URL for the giscus iframe.
+					const resolvedTheme =
+						theme.charAt(0) === '/' ? location.origin + theme : theme;
+					const s = document.createElement('script');
+					s.src = 'https://giscus.app/client.js';
+					s.async = true;
+					s.crossOrigin = 'anonymous';
+					const attrs = {
+						'data-repo': repo,
+						'data-repo-id': repoId,
+						'data-category': category,
+						'data-category-id': categoryId,
+						'data-mapping': 'specific',
+						'data-term': term,
+						'data-strict': '1',
+						'data-reactions-enabled': reactionsEnabled,
+						'data-emit-metadata': emitMetadata,
+						'data-input-position': inputPosition,
+						'data-theme': resolvedTheme,
+						'data-lang': lang,
+					};
+					Object.keys(attrs).forEach(function (k) {
+						s.setAttribute(k, attrs[k]);
+					});
+					container.appendChild(s);
+				});
+			})();
+		</script>
 	)
 }
 
@@ -32,9 +81,25 @@ import { GISCUS } from '../consts';
 		width: 720px;
 		max-width: calc(100% - 2em);
 		margin: 2em auto 0;
-		padding: 1em;
+		padding: 0 1em;
 	}
-	.comments h2 {
-		margin-bottom: 0.5em;
+	.comments > summary {
+		cursor: pointer;
+		padding: 0.5em 0;
+		color: rgb(var(--gray));
+		font-weight: 700;
+		list-style: none;
+	}
+	.comments > summary::-webkit-details-marker {
+		display: none;
+	}
+	.comments > summary::before {
+		content: '▸ ';
+	}
+	.comments[open] > summary::before {
+		content: '▾ ';
+	}
+	#giscus-container {
+		margin-top: 1em;
 	}
 </style>
