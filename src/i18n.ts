@@ -42,8 +42,8 @@ export const UI: Record<Locale, Strings> = {
 		lastUpdated: 'Last updated on',
 		site: { description: 'Personal site and blog of choplin (Akihiro Okuno).' },
 		home: {
-			role: 'Software engineer, working with databases and AI.',
-			intro: 'Mostly thoughts and observations on building software — with concrete notes along the way.',
+			role: 'Software engineer, thinking about databases and AI.',
+			intro: 'Ideas and insights from building software.',
 			allPosts: 'All posts →',
 		},
 		blog: { title: 'Blog', description: 'Posts by choplin.' },
@@ -56,8 +56,8 @@ export const UI: Record<Locale, Strings> = {
 		site: { description: 'choplin（奥野晃裕）の個人サイト・ブログ。' },
 		home: {
 			// Tagline is intentionally English on both locales.
-			role: 'Software engineer, working with databases and AI.',
-			intro: 'Mostly thoughts and observations on building software — with concrete notes along the way.',
+			role: 'Software engineer, thinking about databases and AI.',
+			intro: 'Ideas and insights from building software.',
 			allPosts: '記事一覧 →',
 		},
 		blog: { title: 'ブログ', description: 'choplin の記事一覧。' },
