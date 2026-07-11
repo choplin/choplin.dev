@@ -43,7 +43,7 @@ export const UI: Record<Locale, Strings> = {
 		site: { description: 'Personal site and blog of choplin (Akihiro Okuno).' },
 		home: {
 			role: 'Software engineer, thinking about databases and AI.',
-			intro: 'Ideas and insights from building software.',
+			intro: 'Notes and thoughts on building software.',
 			allPosts: 'All posts →',
 		},
 		blog: { title: 'Blog', description: 'Posts by choplin.' },
@@ -57,7 +57,7 @@ export const UI: Record<Locale, Strings> = {
 		home: {
 			// Tagline is intentionally English on both locales.
 			role: 'Software engineer, thinking about databases and AI.',
-			intro: 'Ideas and insights from building software.',
+			intro: 'Notes and thoughts on building software.',
 			allPosts: '記事一覧 →',
 		},
 		blog: { title: 'ブログ', description: 'choplin の記事一覧。' },
