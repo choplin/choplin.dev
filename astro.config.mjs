@@ -3,6 +3,8 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +13,11 @@ export default defineConfig({
 		defaultLocale: 'en',
 		locales: ['en', 'ja'],
 		routing: { prefixDefaultLocale: false },
+	},
+	// LaTeX math in posts (KaTeX). MDX inherits this markdown config.
+	markdown: {
+		remarkPlugins: [remarkMath],
+		rehypePlugins: [rehypeKatex],
 	},
 	integrations: [
 		mdx(),
