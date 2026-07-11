@@ -19,11 +19,11 @@ export const GISCUS = {
 	reactionsEnabled: '1',
 	emitMetadata: '0',
 	inputPosition: 'top', // 'top' | 'bottom'
-	// 'noborder'  -> borderless theme that auto-follows OS light/dark (least prominent).
-	// A built-in name (e.g. 'preferred_color_scheme', 'light', 'dark') also works.
-	// A same-origin path like '/giscus-theme.css' loads a custom CSS theme; a
-	// leading-'/' is resolved to an absolute URL at runtime so the giscus iframe
-	// can fetch it cross-origin (needs CORS — see public/_headers).
-	theme: 'noborder',
+	// Match the SITE theme, which is currently light-only — so pin a light,
+	// borderless giscus theme. If you later add a dark mode to the site, switch
+	// this to 'noborder' (auto-follows OS light/dark) or drive it from your theme toggle.
+	// A same-origin path like '/giscus-theme.css' loads a custom CSS theme instead; a
+	// leading-'/' is resolved to an absolute URL at runtime (needs CORS — see public/_headers).
+	theme: 'noborder_light',
 	lang: 'ja',
 } as const;

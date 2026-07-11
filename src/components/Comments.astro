@@ -62,15 +62,17 @@ const enabled = GISCUS.enabled && !!term;
 					s.setAttribute(k, attrs[k]);
 				});
 				container.appendChild(s);
-				// Keep the giscus theme in sync when the OS switches light/dark.
-				darkQuery.addEventListener('change', function () {
-					const frame = container.querySelector('iframe.giscus-frame');
-					if (frame)
-						frame.contentWindow.postMessage(
-							{ giscus: { setConfig: { theme: resolveTheme() } } },
-							'https://giscus.app',
-						);
-				});
+				// Only when auto-following the OS ('noborder'): re-sync giscus on scheme change.
+				if (theme === 'noborder') {
+					darkQuery.addEventListener('change', function () {
+						const frame = container.querySelector('iframe.giscus-frame');
+						if (frame)
+							frame.contentWindow.postMessage(
+								{ giscus: { setConfig: { theme: resolveTheme() } } },
+								'https://giscus.app',
+							);
+					});
+				}
 			})();
 		</script>
 	)
