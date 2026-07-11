@@ -19,10 +19,11 @@ export const GISCUS = {
 	reactionsEnabled: '1',
 	emitMetadata: '0',
 	inputPosition: 'top', // 'top' | 'bottom'
-	// Built-in theme name (e.g. 'preferred_color_scheme', 'noborder_light'),
-	// OR a same-origin path to a custom CSS theme like '/giscus-theme.css'.
-	// A leading-'/' path is resolved to an absolute URL at runtime so the
-	// giscus iframe can fetch it cross-origin (needs CORS — see public/_headers).
-	theme: 'preferred_color_scheme',
+	// 'noborder'  -> borderless theme that auto-follows OS light/dark (least prominent).
+	// A built-in name (e.g. 'preferred_color_scheme', 'light', 'dark') also works.
+	// A same-origin path like '/giscus-theme.css' loads a custom CSS theme; a
+	// leading-'/' is resolved to an absolute URL at runtime so the giscus iframe
+	// can fetch it cross-origin (needs CORS — see public/_headers).
+	theme: 'noborder',
 	lang: 'ja',
 } as const;

@@ -10,14 +10,7 @@ const { term } = Astro.props;
 const enabled = GISCUS.enabled && !!term;
 ---
 
-{
-	enabled && (
-		<details class="comments" id="comments">
-			<summary>コメントを表示 / Comments</summary>
-			<div id="giscus-container" />
-		</details>
-	)
-}
+{enabled && <section id="giscus-container" class="comments" aria-label="Comments" />}
 
 {
 	enabled && (
@@ -35,41 +28,48 @@ const enabled = GISCUS.enabled && !!term;
 				term,
 			}}
 		>
-			// Load giscus only when the reader opens the details — a closed
-			// comment section then costs zero iframe / network.
 			(function () {
-				const details = document.getElementById('comments');
 				const container = document.getElementById('giscus-container');
-				if (!details || !container) return;
-				let loaded = false;
-				details.addEventListener('toggle', function () {
-					if (!details.open || loaded) return;
-					loaded = true;
-					// Custom CSS themes must be an absolute URL for the giscus iframe.
-					const resolvedTheme =
-						theme.charAt(0) === '/' ? location.origin + theme : theme;
-					const s = document.createElement('script');
-					s.src = 'https://giscus.app/client.js';
-					s.async = true;
-					s.crossOrigin = 'anonymous';
-					const attrs = {
-						'data-repo': repo,
-						'data-repo-id': repoId,
-						'data-category': category,
-						'data-category-id': categoryId,
-						'data-mapping': 'specific',
-						'data-term': term,
-						'data-strict': '1',
-						'data-reactions-enabled': reactionsEnabled,
-						'data-emit-metadata': emitMetadata,
-						'data-input-position': inputPosition,
-						'data-theme': resolvedTheme,
-						'data-lang': lang,
-					};
-					Object.keys(attrs).forEach(function (k) {
-						s.setAttribute(k, attrs[k]);
-					});
-					container.appendChild(s);
+				if (!container) return;
+				const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+				function resolveTheme() {
+					// 'noborder' -> borderless theme that follows the OS light/dark setting.
+					if (theme === 'noborder')
+						return darkQuery.matches ? 'noborder_dark' : 'noborder_light';
+					// A leading-'/' path is a same-origin custom CSS theme; giscus needs it absolute.
+					return theme.charAt(0) === '/' ? location.origin + theme : theme;
+				}
+				const s = document.createElement('script');
+				s.src = 'https://giscus.app/client.js';
+				s.async = true;
+				s.crossOrigin = 'anonymous';
+				const attrs = {
+					'data-repo': repo,
+					'data-repo-id': repoId,
+					'data-category': category,
+					'data-category-id': categoryId,
+					'data-mapping': 'specific',
+					'data-term': term,
+					'data-strict': '1',
+					'data-reactions-enabled': reactionsEnabled,
+					'data-emit-metadata': emitMetadata,
+					'data-input-position': inputPosition,
+					'data-theme': resolveTheme(),
+					'data-lang': lang,
+					'data-loading': 'lazy',
+				};
+				Object.keys(attrs).forEach(function (k) {
+					s.setAttribute(k, attrs[k]);
+				});
+				container.appendChild(s);
+				// Keep the giscus theme in sync when the OS switches light/dark.
+				darkQuery.addEventListener('change', function () {
+					const frame = container.querySelector('iframe.giscus-frame');
+					if (frame)
+						frame.contentWindow.postMessage(
+							{ giscus: { setConfig: { theme: resolveTheme() } } },
+							'https://giscus.app',
+						);
 				});
 			})();
 		</script>
@@ -78,28 +78,11 @@ const enabled = GISCUS.enabled && !!term;
 
 <style>
 	.comments {
+		display: block;
 		width: 720px;
 		max-width: calc(100% - 2em);
-		margin: 2em auto 0;
-		padding: 0 1em;
-	}
-	.comments > summary {
-		cursor: pointer;
-		padding: 0.5em 0;
-		color: rgb(var(--gray));
-		font-weight: 700;
-		list-style: none;
-	}
-	.comments > summary::-webkit-details-marker {
-		display: none;
-	}
-	.comments > summary::before {
-		content: '▸ ';
-	}
-	.comments[open] > summary::before {
-		content: '▾ ';
-	}
-	#giscus-container {
-		margin-top: 1em;
+		margin: 3em auto 0;
+		padding: 1.5em 1em 0;
+		border-top: 1px solid rgb(var(--gray-light));
 	}
 </style>
