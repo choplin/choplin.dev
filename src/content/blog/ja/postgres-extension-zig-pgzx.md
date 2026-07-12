@@ -2,7 +2,8 @@
 title: 'Zig言語とpgzxによるPostgreSQL拡張開発の紹介'
 description: '「より良いC」を目指す Zig 言語と pgzx フレームワークで、PostgreSQL の拡張機能を開発する方法を紹介する。'
 pubDate: 'Dec 17 2024'
-commentId: 'postgres-extension-zig-pgzx'
+commentId: 'postgres-extension-zig-pgzx-ja'
+translationKey: 'postgres-extension-zig-pgzx'
 ---
 
 この記事は[PostgreSQLアドベントカレンダー](https://qiita.com/advent-calendar/2024/postgresql)の15日目の記事です。
