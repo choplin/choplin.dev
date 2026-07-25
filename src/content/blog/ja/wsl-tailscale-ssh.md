@@ -1,7 +1,7 @@
 ---
-title: 'WSL2 で常時起動サーバーを立てて Tailscale 経由で SSH する'
+title: 'Hermes を動かす WSL2 常時起動サーバーを立てて Tailscale 経由で SSH する'
 description: 'Windows 上の WSL2 を常時起動のサーバーにし、外から Tailscale 経由で SSH で入れるようにする。mirrored networking と、自動ログイン・自動起動まわりの設定メモ。'
-pubDate: 'Jul 14 2026'
+pubDate: 'Jul 25 2026'
 commentId: 'wsl-tailscale-ssh-ja'
 translationKey: 'wsl-tailscale-ssh'
 ---

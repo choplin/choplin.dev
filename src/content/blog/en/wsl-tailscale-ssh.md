@@ -1,7 +1,7 @@
 ---
-title: 'Running an always-on server on WSL2, reachable over Tailscale SSH'
+title: 'Running Hermes on an always-on WSL2 server, reachable over Tailscale SSH'
 description: 'Turn WSL2 on a Windows box into an always-on server reachable from anywhere over Tailscale SSH. Notes on mirrored networking and the auto-login / auto-start setup.'
-pubDate: 'Jul 14 2026'
+pubDate: 'Jul 25 2026'
 commentId: 'wsl-tailscale-ssh-en'
 translationKey: 'wsl-tailscale-ssh'
 ---
