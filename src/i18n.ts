@@ -47,7 +47,10 @@ export const UI: Record<Locale, Strings> = {
 			allPosts: 'All posts →',
 		},
 		blog: { title: 'Blog', description: 'Posts by choplin.' },
-		about: { title: 'About', description: 'About choplin.' },
+		about: {
+			title: 'About',
+			description: 'About Akihiro Okuno (choplin), a software engineer specializing in database systems.',
+		},
 	},
 	ja: {
 		langName: '日本語',
@@ -61,6 +64,9 @@ export const UI: Record<Locale, Strings> = {
 			allPosts: '記事一覧 →',
 		},
 		blog: { title: 'ブログ', description: 'choplin の記事一覧。' },
-		about: { title: '自己紹介', description: 'choplin について。' },
+		about: {
+			title: '自己紹介',
+			description: 'データベースシステムを専門とするソフトウェアエンジニア、奥野晃裕（choplin）について。',
+		},
 	},
 };

@@ -1,0 +1,190 @@
+---
+import { SITE_TITLE } from '../consts';
+import { type Locale, UI, localePath, otherLocale } from '../i18n';
+import BaseHead from './BaseHead.astro';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+
+interface Props {
+	locale: Locale;
+}
+
+interface AboutContent {
+	title: string;
+	aboutMeLabel: string;
+	aboutMe: string[];
+	aboutSiteLabel: string;
+	aboutSiteIntro: string;
+	aboutSiteAreas: Array<{
+		title: string;
+		description: string;
+	}>;
+	linksLabel: string;
+}
+
+const content = {
+	ja: {
+		title: 'About',
+		aboutMeLabel: 'About me',
+		aboutMe: [
+			'choplin / Akihiro Okuno',
+			'ソフトウェアエンジニア。関心領域はデータベースシステム、分散データ処理、開発環境。',
+			'専門は大規模データ基盤と分散クエリエンジンの設計、実装、運用。',
+		],
+		aboutSiteLabel: 'About this site',
+		aboutSiteIntro:
+			'ソフトウェアと、その開発環境についての記録。',
+		aboutSiteAreas: [
+			{
+				title: 'ソフトウェアの内部',
+				description: 'データベースシステムと分散処理。',
+			},
+			{
+				title: 'ソフトウェア開発',
+				description: 'プログラミング、開発ツール、AIを使った開発。',
+			},
+			{
+				title: '開発環境',
+				description: 'コンピューター、デスク、周辺機器。',
+			},
+		],
+		linksLabel: 'ほかの場所',
+	},
+	en: {
+		title: 'About',
+		aboutMeLabel: 'About me',
+		aboutMe: [
+			'choplin / Akihiro Okuno',
+			'I am a software engineer interested in database systems, distributed data processing, and development environments.',
+			'I specialize in designing, implementing, and operating large-scale data platforms and distributed query engines.',
+		],
+		aboutSiteLabel: 'About this site',
+		aboutSiteIntro:
+			'This site is a collection of notes on software and the environments used to develop it.',
+		aboutSiteAreas: [
+			{
+				title: 'Software internals',
+				description: 'Database systems and distributed processing.',
+			},
+			{
+				title: 'Software development',
+				description: 'Programming, development tools, and AI-assisted development.',
+			},
+			{
+				title: 'Development environments',
+				description: 'Computers, desks, and peripherals.',
+			},
+		],
+		linksLabel: 'Elsewhere',
+	},
+} satisfies Record<Locale, AboutContent>;
+
+const { locale } = Astro.props;
+const t = UI[locale];
+const copy = content[locale];
+const switchHref = localePath(otherLocale(locale), '/about');
+const links = [
+	{ label: 'GitHub', href: 'https://github.com/choplin' },
+	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/akihiro-okuno/' },
+	{ label: 'X', href: 'https://x.com/choplin' },
+];
+---
+
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<BaseHead title={`${t.about.title} | ${SITE_TITLE}`} description={t.about.description} />
+		<style>
+			main {
+				width: 720px;
+			}
+			.profile {
+				--profile-muted: rgb(var(--gray));
+			}
+			h1 {
+				margin: 0;
+				font-size: 2.441em;
+			}
+			.profile section,
+			.profile nav {
+				margin-top: 3rem;
+				padding-top: 1.5rem;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.section-title {
+				margin: 0 0 1.25rem;
+				font-size: 1.35rem;
+			}
+			.about-me p,
+			.about-site p {
+				margin: 0;
+			}
+			.about-me p + p,
+			.about-site p + p {
+				margin-top: 0.8rem;
+			}
+			.site-areas {
+				display: grid;
+				gap: 1.5rem;
+				margin-top: 1.5rem;
+			}
+			.site-area h3 {
+				margin: 0;
+				font-size: 1.05rem;
+			}
+			.site-area p {
+				margin: 0.45rem 0 0;
+			}
+			.links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem 1.25rem;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body class="about-page">
+		<Header locale={locale} switchHref={switchHref} />
+		<main>
+			<article class="profile">
+				<h1>{copy.title}</h1>
+
+				<section class="about-me">
+					<h2 class="section-title">{copy.aboutMeLabel}</h2>
+					{copy.aboutMe.map((paragraph) => <p>{paragraph}</p>)}
+				</section>
+
+				<section class="about-site">
+					<h2 class="section-title">{copy.aboutSiteLabel}</h2>
+					<p>{copy.aboutSiteIntro}</p>
+					<div class="site-areas">
+						{
+							copy.aboutSiteAreas.map((area) => (
+								<div class="site-area">
+									<h3>{area.title}</h3>
+									<p>{area.description}</p>
+								</div>
+							))
+						}
+					</div>
+				</section>
+
+				<nav aria-label={copy.linksLabel}>
+					<h2 class="section-title">{copy.linksLabel}</h2>
+					<ul class="links">
+						{
+							links.map((link) => (
+								<li>
+									<a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

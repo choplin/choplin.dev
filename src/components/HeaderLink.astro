@@ -7,8 +7,13 @@ const { href, class: className, ...props } = Astro.props;
 // Strip a leading non-default locale segment (e.g. /ja) so active-state
 // matching works the same on English and Japanese routes.
 const stripLocale = (p: string) => p.replace(/^\/ja(?=\/|$)/, '') || '/';
-const pathname = stripLocale(Astro.url.pathname.replace(import.meta.env.BASE_URL, ''));
-const target = stripLocale(String(href));
+const normalizePath = (p: string) => {
+	const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+	const withoutBase = base && p.startsWith(base) ? p.slice(base.length) : p;
+	return `/${withoutBase}`.replace(/\/+/g, '/').replace(/\/$/, '') || '/';
+};
+const pathname = stripLocale(normalizePath(Astro.url.pathname));
+const target = stripLocale(normalizePath(String(href)));
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = target === pathname || target === '/' + (subpath?.[0] || '');
 ---
