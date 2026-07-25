@@ -8,6 +8,7 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { type Locale, UI } from '../i18n';
+import { ogImagePath } from '../lib/og';
 
 interface Props {
 	title: string;
@@ -25,11 +26,12 @@ interface Props {
 const { title, description, pubDate, updatedDate, heroImage, commentId, locale, switchHref } =
 	Astro.props;
 const t = UI[locale];
+const ogImage = commentId ? ogImagePath(commentId, title) : heroImage;
 ---
 
 <html lang={locale}>
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={ogImage} />
 		<style>
 			main {
 				width: calc(100% - 2em);

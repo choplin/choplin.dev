@@ -3,6 +3,8 @@
 
 export const SITE_TITLE = 'choplin';
 export const SITE_DESCRIPTION = 'Personal site and blog of choplin (Akihiro Okuno).';
+export const OG_SITE_NAME = "choplin's blog";
+export const OG_IMAGE_VERSION = 'card-strong-shadow-icon-dark-bg';
 
 // giscus (GitHub Discussions based comments) configuration.
 // Fill these in from https://giscus.app after enabling GitHub Discussions

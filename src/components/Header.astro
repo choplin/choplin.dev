@@ -16,7 +16,12 @@ const other = otherLocale(locale);
 
 <header>
 	<nav>
-		<h2><a href={localePath(locale, '/')}>{SITE_TITLE}</a></h2>
+		<h2>
+			<a class="site-brand" href={localePath(locale, '/')}>
+				<img src="/icon-dark-bg.png" width="32" height="32" alt="" />
+				<span>{SITE_TITLE}</span>
+			</a>
+		</h2>
 		<div class="internal-links">
 			<HeaderLink href={localePath(locale, '/')}>{t.nav.home}</HeaderLink>
 			<HeaderLink href={localePath(locale, '/blog')}>{t.nav.blog}</HeaderLink>
@@ -53,6 +58,24 @@ const other = otherLocale(locale);
 	h2 a.active {
 		text-decoration: none;
 	}
+	.site-brand {
+		display: inline-grid;
+		grid-template-columns: 32px auto;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.site-brand img {
+		display: block;
+		width: 32px;
+		height: 32px;
+		border-radius: 8px;
+	}
+	.site-brand span {
+		display: flex;
+		align-items: center;
+		height: 32px;
+		line-height: 1;
+	}
 	nav {
 		display: flex;
 		align-items: center;
@@ -76,5 +99,10 @@ const other = otherLocale(locale);
 	.lang-switch {
 		font-size: 0.9em;
 		color: rgb(var(--gray));
+	}
+	@media (max-width: 600px) {
+		.site-brand span {
+			display: none;
+		}
 	}
 </style>
