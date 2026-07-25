@@ -35,6 +35,15 @@ Blog posts are mostly work-notes (作業ログ) and technical explanations. A po
 
 Frame the post around what it actually accomplishes; retitle if the real scope drifts from the initial framing.
 
+## Tags
+
+- Use only tags defined in `src/data/tags.ts`.
+- When writing or editing a post, propose zero to three applicable tags based on the article's primary subjects.
+- Existing tags may be assigned without confirmation.
+- Do not create a new tag without explicit user approval. When proposing one, explain its intended scope and why existing tags are insufficient.
+- Treat tags as reusable reading categories, not as an inventory of every product, library, or command mentioned in an article.
+- Prefer stable subjects likely to apply to multiple posts. A tag may still be used for a single post when it represents an intended recurring subject.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build

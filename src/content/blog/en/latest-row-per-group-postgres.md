@@ -4,6 +4,8 @@ description: 'Getting the latest row per user with an aggregate-function trick t
 pubDate: 'Dec 10 2024'
 commentId: 'latest-row-per-group-postgres'
 translationKey: 'latest-row-per-group-postgres'
+tags:
+  - postgresql
 ---
 
 There's an article by soudai-san, [How to fetch the latest row from a history table](https://soudai.hatenablog.com/entry/2024/12/10/115848), that explains this problem. In PostgreSQL, given a table of user history like this:

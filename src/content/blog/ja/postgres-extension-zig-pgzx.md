@@ -4,6 +4,9 @@ description: '「より良いC」を目指す Zig 言語と pgzx フレームワ
 pubDate: 'Dec 17 2024'
 commentId: 'postgres-extension-zig-pgzx-ja'
 translationKey: 'postgres-extension-zig-pgzx'
+tags:
+  - postgresql
+  - zig
 ---
 
 この記事は[PostgreSQLアドベントカレンダー](https://qiita.com/advent-calendar/2024/postgresql)の15日目の記事です。

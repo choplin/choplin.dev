@@ -4,6 +4,9 @@ description: 'Turn WSL2 on a Windows box into an always-on server reachable from
 pubDate: 'Jul 25 2026'
 commentId: 'wsl-tailscale-ssh-en'
 translationKey: 'wsl-tailscale-ssh'
+tags:
+  - wsl
+  - homelab
 ---
 
 I set up WSL2, running on a Windows machine (a mini PC), as an always-on server that I can SSH into from outside over Tailscale. This is a work note recording the configuration that ended up working.

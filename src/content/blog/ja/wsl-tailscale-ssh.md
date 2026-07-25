@@ -4,6 +4,9 @@ description: 'Windows 上の WSL2 を常時起動のサーバーにし、外か�
 pubDate: 'Jul 25 2026'
 commentId: 'wsl-tailscale-ssh-ja'
 translationKey: 'wsl-tailscale-ssh'
+tags:
+  - wsl
+  - homelab
 ---
 
 Windows マシン（ミニ PC）の上で動かしている WSL2 を、常時起動のサーバーとして運用し、外から Tailscale 経由で SSH で入れるようにした。動いた構成を作業メモとして残しておく。

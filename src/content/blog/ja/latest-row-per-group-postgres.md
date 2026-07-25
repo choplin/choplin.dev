@@ -4,6 +4,8 @@ description: 'ユーザーごとの最新1件を取得する処理を、Window�
 pubDate: 'Dec 10 2024'
 commentId: 'latest-row-per-group-postgres-ja'
 translationKey: 'latest-row-per-group-postgres'
+tags:
+  - postgresql
 ---
 
 そーだいさんが執筆された記事で、[履歴テーブルから最新の1件を取ってくる方法](https://soudai.hatenablog.com/entry/2024/12/10/115848)について解説している。PostgreSQLの例だと以下のようなユーザーの履歴データに対し:

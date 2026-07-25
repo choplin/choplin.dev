@@ -4,6 +4,9 @@ description: "An introduction to developing PostgreSQL extensions using the Zig 
 pubDate: 'Dec 17 2024'
 commentId: 'postgres-extension-zig-pgzx'
 translationKey: 'postgres-extension-zig-pgzx'
+tags:
+  - postgresql
+  - zig
 ---
 
 This article is day 15 of the [PostgreSQL Advent Calendar 2024](https://qiita.com/advent-calendar/2024/postgresql).

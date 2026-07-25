@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { isTagId, type TagId } from './data/tags';
 
 const blog = defineCollection({
 	// Load Markdown and MDX files in the `src/content/blog/` directory.
@@ -21,6 +22,14 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			tags: z
+				.array(
+					z.custom<TagId>(isTagId, {
+						message: 'Tag must be defined in src/data/tags.ts',
+					}),
+				)
+				.max(3)
+				.default([]),
 		}),
 });
 
