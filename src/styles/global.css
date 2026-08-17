@@ -76,6 +76,20 @@ p {
 .prose p {
 	margin-bottom: 2em;
 }
+.prose p:has(> img:only-child):has(+ .image-caption) {
+	margin-bottom: 0.5rem;
+}
+.prose p > img:only-child {
+	display: block;
+	margin-inline: auto;
+}
+.prose .image-caption {
+	margin: 0 0 2em;
+	color: rgb(var(--gray));
+	font-size: 0.85em;
+	line-height: 1.5;
+	text-align: center;
+}
 textarea {
 	width: 100%;
 	font-size: 16px;

@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
+import remarkImageAttributes from './src/plugins/remark-image-attributes.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +17,7 @@ export default defineConfig({
 	},
 	// LaTeX math in posts (KaTeX). MDX inherits this markdown config.
 	markdown: {
-		remarkPlugins: [remarkMath],
+		remarkPlugins: [remarkMath, remarkImageAttributes],
 		rehypePlugins: [rehypeKatex],
 	},
 	integrations: [
