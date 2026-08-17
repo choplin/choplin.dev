@@ -3,16 +3,17 @@ title: '3DプリンターでAIと物理世界を接続する'
 description: 'AIエージェントにOpenSCADモデルを作らせ、身の回りで使う専用の小物を3Dプリンターで作った記録。'
 pubDate: 'Aug 13 2026'
 commentId: 'ai-agent-openscad-3d-print-skill-ja'
+translationKey: 'ai-agent-openscad-3d-print-skill'
 tags: []
 ---
 
 3Dプリンターは結構前に購入したが、あまり活用できていなかった。自作キーボードのモデルなどを印刷することはあっても、自分でデザインを一から起こして作る機会は少なかった。モデルを作るのが面倒だったからだ。
 
-![Anker M5](./ai-agent-openscad-3d-print-skill/anker-m5.png){width=480}
+![Anker M5](../assets/ai-agent-openscad-3d-print-skill/anker-m5.png){width=480}
 
 <p class="image-caption">Anker M5。あまり使わないうちに3Dプリンター事業ごと撤退してしまった。</p>
 
-![Anker M5が置かれている部屋](./ai-agent-openscad-3d-print-skill/anker-m5-in-room.jpg){width=480}
+![Anker M5が置かれている部屋](../assets/ai-agent-openscad-3d-print-skill/anker-m5-in-room.jpg){width=480}
 
 <p class="image-caption">自宅での様子。いい感じの置き場所がなくて物置の床に直置きしている。</p>
 
@@ -37,7 +38,7 @@ difference() {
 }
 ```
 
-![OpenSCADのサンプル。直方体から円柱をくり抜いている。](./ai-agent-openscad-3d-print-skill/openscad-csg-example.png){width=480}
+![OpenSCADのサンプル。直方体から円柱をくり抜いている。](../assets/ai-agent-openscad-3d-print-skill/openscad-csg-example.png){width=480}
 
 <p class="image-caption">直方体を円柱でくり抜いているモデル。</p>
 
@@ -53,7 +54,7 @@ Scarlett 4i4というオーディオインターフェースを使っている�
 
 AIに伝えたところこんな感じのモデルを作ってくれた。ざっくり作ってくれた後に、指示された通りにノギスでサイズを測った結果を伝えて、微調整してくれた。
 
-![オーディオインターフェースマウントのモデル](./ai-agent-openscad-3d-print-skill/audio-interface-model.png){width=480}
+![オーディオインターフェースマウントのモデル](../assets/ai-agent-openscad-3d-print-skill/audio-interface-model.png){width=480}
 
 <p class="image-caption">オーディオインターフェースマウントのモデル。くり抜きが六角形になっているのはオーバーハング角を緩やかにするため。</p>
 
@@ -61,12 +62,12 @@ AIに伝えたところこんな感じのモデルを作ってくれた。ざっ
 
 実際に設置した様子はこちら。天板が薄くて少し撓んでしまっていることを除けば完璧なフィットである。
 
-![オーディオインターフェースを設置した様子](./ai-agent-openscad-3d-print-skill/audio-interface.jpg){width=640}
+![オーディオインターフェースを設置した様子](../assets/ai-agent-openscad-3d-print-skill/audio-interface.jpg){width=640}
 <p class="image-caption">オーディオインターフェースを設置した様子。シンデレラフィットしている。</p>
 
 また、反対側のアームもスペースが余っているため、特に置くものは決まっていないが、同じ固定部を流用してトレーを作ってもらった。形状をモジュール化して使い回しやすい点はOpenSCADを用いる利点の一つだ。
 
-![反対側の腕にマウントしたトレー](./ai-agent-openscad-3d-print-skill/tray.jpg){width=640}
+![反対側の腕にマウントしたトレー](../assets/ai-agent-openscad-3d-print-skill/tray.jpg){width=640}
 <p class="image-caption">同じマウント方式で作ったトレー。とりあえずギター用のワイヤレスを入れている。</p>
 
 ## ハンディ掃除機を引っ掛けて設置するホルダー
@@ -77,13 +78,13 @@ AIに伝えたところこんな感じのモデルを作ってくれた。ざっ
 
 こちらも当然ぴったりのものは存在しないので、AIエージェントに伝えて3Dモデルを作ってもらった。ただ、こちらのモデルは最初からホルダーを作るように伝えてもなかなか思ったとおりのものができなかった。掃除機の形状が独特なため、それをちゃんと共有することができなかったのだ。そのため、一度大きく方針を転換し、先に掃除機の形状を表すリファレンスモデルを作ってもらった。
 
-![掃除機のモデル](./ai-agent-openscad-3d-print-skill/mystick-neo-model.png){width=480}
+![掃除機のモデル](../assets/ai-agent-openscad-3d-print-skill/mystick-neo-model.png){width=480}
 
 <p class="image-caption">MyStick Neoのリファレンスモデル。背面の微妙な盛り上がりも表現できている。</p>
 
 このリファレンスモデルをもとに、掃除機を保持するための方法とデザインを決めてモデルを作ってもらった。
 
-![掃除機ホルダーのモデル](./ai-agent-openscad-3d-print-skill/handy-vacuum-holder-model.png){width=480}
+![掃除機ホルダーのモデル](../assets/ai-agent-openscad-3d-print-skill/handy-vacuum-holder-model.png){width=480}
 
 <p class="image-caption">掃除機ホルダーのモデル。持ち手を穴に通し、段差で保持する形状。</p>
 
@@ -91,13 +92,13 @@ AIに伝えたところこんな感じのモデルを作ってくれた。ざっ
 
 完成品はこちら。IKEAのワゴンの壁に引っ掛けている。
 
-![掃除機ホルダーの設置の様子](./ai-agent-openscad-3d-print-skill/handy-cleaner.jpg){width=640}
+![掃除機ホルダーの設置の様子](../assets/ai-agent-openscad-3d-print-skill/handy-cleaner.jpg){width=640}
 
 <p class="image-caption">掃除機ホルダー。IKEAのワゴンの壁に引っ掛けている。</p>
 
 また、掃除機を二台持っていたため、そちらを設置するために固定方式を変えたモデルをもう一つ作ってもらった。
 
-![掃除機ホルダーの設置の様子](./ai-agent-openscad-3d-print-skill/handy-cleaner-2.jpg){width=640}
+![掃除機ホルダーの設置の様子](../assets/ai-agent-openscad-3d-print-skill/handy-cleaner-2.jpg){width=640}
 
 <p class="image-caption">棚の脚に横からはめて上からキーをかぶせて固定する感じになっている。3Dプリンターの精度がよくなく固定力がちょっと足りないため改善する予定。</p>
 
